@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class Main {
 
-
+    static ArrayList <String> disciplinas = new ArrayList();
+    static ArrayList<String> aluno = new ArrayList();
+    static ArrayList<String> professor = new ArrayList();
+    static ArrayList<String> professorR = new ArrayList();
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        ArrayList<String> aluno = new ArrayList();
-        ArrayList<String> professor = new ArrayList();
-        
-        
+
         int menu = -1;
 
         do {
@@ -37,6 +37,7 @@ public class Main {
                     Professores.menuProfessores(professor);
                     break;
                 case 3:
+                    Disciplinas.mainDiciplinas(disciplinas, professor, professorR);
                     break;
                 default:
                     break;

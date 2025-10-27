@@ -1,3 +1,5 @@
+package projetoescolar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +11,7 @@ public class Disciplinas {
         String nomeD, idprof;
         int infor;
 
-        Professores.listarProfessores(professores);
+        Professores.ListarProfessores(professores);
         System.out.print("Digite: ");
         infor = input.nextInt() - 1;
         if(infor >= 0 && infor <= professores.size()){

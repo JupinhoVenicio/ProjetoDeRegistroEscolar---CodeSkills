@@ -1,112 +1,101 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Disciplinas {
-    private static ArrayList <Disciplinas> arrayL = new ArrayList<>();
-    private String id, nomeM, conteudo;
 
+    public static void add (ArrayList <String> disciplinas, ArrayList <String> professores, ArrayList <String> profR){
+        Scanner input = new Scanner(System.in);
+        String nomeD, idprof;
+        int infor;
 
+        Professores.listarProfessores(professores);
+        System.out.print("Digite: ");
+        infor = input.nextInt() - 1;
+        if(infor >= 0 && infor <= professores.size()){
+            idprof = Integer.toString(infor);
 
-    public Disciplinas(String id, String nomeM, String conteudo){
-        this.id = id;
-        this.nomeM = nomeM;
-        this.conteudo = conteudo;
-    }
+            System.out.print("Nome Materia: ");
+            nomeD = input.next();
 
-    public  Disciplinas() {
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setNomeM(String nomeM) {
-        this.nomeM = nomeM;
-    }
-
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getNomeM() {
-        return nomeM;
-    }
-
-    public String getConteudo() {
-        return conteudo;
-    }
-
-    public void add (Disciplinas disciplinas){
-        arrayL.add(disciplinas);
-    }
-
-    public String list(){
-        String text = "";
-
-        for(int i = 0; i < arrayL.size(); i++){
-            text = text + arrayL.get(i).toString();
+            disciplinas.add(nomeD);
+            profR.add(idprof);
+        }
+        else{
+            System.out.println("System > Professor nao encontrado! [Abortando processo] <\n");
         }
 
-        return text;
     }
 
-    public Disciplinas buscar(String id) {
+    public static void list(ArrayList <String> disciplinas, ArrayList <String> profR){
+        boolean encontrado = false;
 
-        for(int i = 0; i < arrayL.size(); i++){
-            Disciplinas disciplinas = arrayL.get(i);
+        for(int i = 0; i < disciplinas.size(); i++){
+            System.out.println("ID: "+(i + 1)+" <-> Materia: "+disciplinas.get(i) + " <-> ID professor: " + profR.get(i));
+            encontrado = true;
+        }
+        if(!encontrado){
+            System.out.println("System >Adicione alguma materia! [Abortando processo] <\n");
+        }
+    }
 
-            if(disciplinas.getId().equalsIgnoreCase(id)){
-                return disciplinas;
+//    public static String verificar(ArrayList <String> disciplinas, int verf) {
+//        String text = "algo encontrado!", id;
+//        id = Integer.toString(verf);
+//        for(int i = 0; i < disciplinas.size(); i++){
+//            if(disciplinas.get(i).equalsIgnoreCase(id)){
+//                return text;
+//            }
+//        }
+//        return null;
+//    }
+
+    public static void buscar(ArrayList<String> disciplinas, ArrayList<String> profR) {
+        Scanner input = new Scanner(System.in);
+        String id;
+        boolean encontrado = false;
+
+        System.out.println("Digite:");
+        id = input.next();
+
+        for(int i = 0; i < disciplinas.size(); i++){
+            if(disciplinas.get(i).equalsIgnoreCase(id)){
+                System.out.println("ID: " +(i + 1)+ " <-> " + disciplinas.get(i) +" <-> Professor: " + profR.get(i));
+                encontrado = true;
             }
         }
-        return null;
-    }
 
-    public String delet(String id){
-
-        String text = "";
-        try {
-
-            if(buscar(id) != null) {
-
-                for (int i = 0; i < arrayL.size(); i++) {
-                    Disciplinas disciplinas = arrayL.get(i);
-
-                    if (disciplinas.getId().equalsIgnoreCase(id)) {
-                        arrayL.remove(i);
-                        text = "System > Materia retirada com sucesso! <";
-                    }
-                }
-            }
-            else{
-               text = "System > Materia nao existe para excluir! <";
-            }
-        }catch(Exception e){
-            System.out.println("ERRO -> "+e.getMessage());
+        if(!encontrado){
+            System.out.println("System > Nao encontramos em nosso sistema! <");
         }
-
-        return text;
     }
 
-    @Override
-    public String toString() {
-        return "\n" +
-                ">> Disciplinas <<\n" +
-                "id:" +id+ "\n" +
-                "nomeM: "+nomeM+"\n"+
-                "conteudo: "+conteudo+"\n\n";
+    public static void delet(ArrayList <String> disciplinas, ArrayList <String> profR){
+        Scanner input = new Scanner(System.in);
+        String infor;
+        if(disciplinas.isEmpty()){
+            return;
+        }
+        System.out.println(">> Lista <<");
+        list(disciplinas, profR);
+        System.out.println();
+        System.out.print("Id da disciplina para excluir: ");
+        int id = input.nextInt() - 1;
 
+        if (id >= 0 && id < disciplinas.size()) {
+            disciplinas.remove(id);
+            profR.remove(id);
+            System.out.println("Disciplina removida!");
+        }
+        else {
+            System.out.println("Disciplina não encontrada.");
+        }
     }
 
-    public static void mainDiciplinas(){
+
+    public static void mainDiciplinas(ArrayList <String> disciplinas,  ArrayList <String> professores, ArrayList <String> profR){
 
         Scanner tecla = new Scanner(System.in);
-
-        Disciplinas disciplinas;
 
         String acao;
         int num, cont = 0, exit = 0;
@@ -126,43 +115,26 @@ public class Disciplinas {
                     break;
                 case 1:
                     System.out.println("System > Registrando diciplina(s) <\n");
-                    disciplinas = new Disciplinas();
-                    cont++;
-                    String id = Integer.toString(cont);
-                    if(disciplinas.buscar(id)!=null) {
-
-                    }
-                    else{
-                        disciplinas.setId(id);
-
-                        System.out.println("nome");
-                        disciplinas.setNomeM(tecla.next());
-
-                        System.out.println("conteudo");
-                        disciplinas.setConteudo(tecla.next());
-
-                        disciplinas.add(disciplinas);
-                    }
-
+                    add(disciplinas, professores, profR);
                     break;
                 case 2:
                     System.out.println("System > listando diciplina(s) < \n");
-                    disciplinas = new Disciplinas();
-                    System.out.println(disciplinas.list());
+                    try{
+                        list(disciplinas, profR);
+                    }catch(Exception e){
+                        System.out.println("ERRO -> "+e.getMessage());
+                    }
+
                     break;
                 case 3:
                     System.out.println("System > buscando diciplina(s) <");
-                    disciplinas = new Disciplinas();
-                    System.out.print("Digite o id: ");
-                    acao = tecla.next();
-                    System.out.println(disciplinas.buscar(acao));
+                    buscar(disciplinas, profR);
                     break;
                 case 4:
                     System.out.println("System > excluindo diciplina(s) <");
-                    disciplinas = new Disciplinas();
-                    acao = tecla.next();
-                    System.out.println(disciplinas.delet(acao));
+                    delet(disciplinas, profR);
                     break;
+                default:
             }
 
         } while (exit != 1) ;

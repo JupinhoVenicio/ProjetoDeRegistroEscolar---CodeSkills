@@ -6,17 +6,22 @@ import java.util.ArrayList;
 
 public class Matriculas{
 
-static Scanner Scanner = new Scanner(System.in);
+static Scanner teclado = new Scanner(System.in);
 
-public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> professor, ArrayList<> disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
+public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> professor, ArrayList<String> disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
 
-    int num = -1;
+    int op  = -1;
     do{
         System.out.println("\n-----MENU DAS MATRICULAS-----");
         System.out.println("\n0-Sair");
-        System.out.println("1-Numero da Matricula");
-        System.out.println("2-");
-        System.out.println("-----MENU DAS MATRICULAS-----");
+        System.out.println("1- Adicionar Matriculas");
+        System.out.println("2- Listar Matriculas");
+        
+        while(!teclado.hasNextInt()){
+            System.out.println("Entrada inválida! Por favor, digite um número.");
+            teclado.next();
+        }
+        op = Integer.parseInt(teclado.nextLine());
         
         switch (op) {
                 case 0:
@@ -32,13 +37,13 @@ public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> pr
                     break;
             }
 
-    }while(num != 0)
+    }while(op != 0);
 
 
 }
 
- public static void adicionarMatriculas(ArrayList<String>alunos, ArrayList<String>professor ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
-        alunos.listarAluno(alunos);
+ public static void adicionarMatriculas(ArrayList<String>alunos, ArrayList<String>professor, ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
+        Alunos.ListarAluno(alunos);
         System.out.println("Digite o número do aluno que deseja matricular:");
         while(!teclado.hasNextInt()){
             System.out.println("Entrada inválida! Por favor, digite um número.");
@@ -46,7 +51,7 @@ public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> pr
         }
         int nAluno = Integer.parseInt(teclado.nextLine());
 
-        disciplinas.listarDisciplinas(disciplinas, professor);
+        Disciplinas.list(disciplinas, professor);
         System.out.println("Digite o número da disciplina que deseja matricular:");
         while(!teclado.hasNextInt()){
             System.out.println("Entrada inválida! Por favor, digite um número.");

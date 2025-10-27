@@ -7,7 +7,7 @@ public class Matriculas {
     
     Scanner teclado = new Scanner(System.in);
 
-    public void menuMatriculas(ArrayList<String>alunos, ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
+    public void menuMatriculas(ArrayList<String>alunos, ArrayList<String>professor, ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
         
         int op = -1;
 
@@ -23,7 +23,7 @@ public class Matriculas {
                 case 0:
                     break;
                 case 1:
-                    adicionarMatriculas(alunos, disciplinas, AlunosMatriculados, DisciplinasMatriculadas);
+                    adicionarMatriculas(alunos, professor, disciplinas, AlunosMatriculados, DisciplinasMatriculadas);
                     break;
                 case 2:
                     listarMatriculas(AlunosMatriculados, DisciplinasMatriculadas);
@@ -32,16 +32,24 @@ public class Matriculas {
                     System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
-        }while();
+        }while(op != 0);
     }
 
-    public void adicionarMatriculas(ArrayList<String>alunos, ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
-        alunos.listarAlunos(alunos);
+    public void adicionarMatriculas(ArrayList<String>alunos, ArrayList<String>professor ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
+        alunos.listarAluno(alunos);
         System.out.println("Digite o número do aluno que deseja matricular:");
+        while(!teclado.hasNextInt()){
+            System.out.println("Entrada inválida! Por favor, digite um número.");
+            teclado.next();
+        }
         int nAluno = Integer.parseInt(teclado.nextLine());
 
-        disciplinas.listarDisciplinas(disciplinas);
+        disciplinas.listarDisciplinas(disciplinas, professor);
         System.out.println("Digite o número da disciplina que deseja matricular:");
+        while(!teclado.hasNextInt()){
+            System.out.println("Entrada inválida! Por favor, digite um número.");
+            teclado.next();
+        }
         int nDisciplina = Integer.parseInt(teclado.nextLine());
 
         if(nAluno < alunos.size() && nAluno >= 0 && nDisciplina < disciplinas.size() && nDisciplina >= 0){

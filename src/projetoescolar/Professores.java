@@ -19,9 +19,9 @@ public class Professores
             System.out.println("4 - Buscar Professores");
             System.out.println("5 - Atualizar Professores");
             System.out.println("0 - Sair");
-            System.out.print("Escolha: ");
-            int opcao = input.nextInt();
-            switch (opcao)
+            
+            menu = input.nextInt();
+            switch (menu)
             {
                 case 0:
                 break;
@@ -57,7 +57,7 @@ public class Professores
         {
             for (int i = 0; i < professor.size(); i++)
             {
-                System.out.println((i + 1) + " - " + professor.get(i));
+                System.out.println("\n"+(i + 1) + " - " + professor.get(i));
             }
         }
     }
@@ -65,6 +65,7 @@ public class Professores
     public static void AdicionarProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o nome do professor: ");
+        input.nextLine();
         professor.add(input.nextLine());
         System.out.println("Professor adicionado com sucesso!");
     }
@@ -72,6 +73,7 @@ public class Professores
     public static void RemoverProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o numero do professor: ");
+        
         professor.remove((input.nextInt()) - 1);
         System.out.println("Professor removido com sucesso!");
     }
@@ -79,6 +81,7 @@ public class Professores
     public static void BuscarProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o nome do professor: ");
+        input.nextLine();
         String nome = input.nextLine();
         if (professor.contains(nome))
         {
@@ -95,7 +98,9 @@ public class Professores
         System.out.print("\nDigite o numero do professor: ");
         int num = input.nextInt()-1;
         System.out.print("Novo nome do professor para esse cadastro: ");
-        professor.set(num, input.nextLine());
+        input.nextLine();
+        professor.add(num, input.nextLine());
+        professor.remove(num+1);
         System.out.println("Cadastro atualizado com sucesso!");
     }
 }

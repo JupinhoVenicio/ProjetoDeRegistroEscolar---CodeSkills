@@ -9,6 +9,9 @@ public class Main {
     static ArrayList<String> aluno = new ArrayList();
     static ArrayList<String> professor = new ArrayList();
     static ArrayList<String> professorR = new ArrayList();
+    static ArrayList<String> AlunosMatriculados = new ArrayList();
+    static ArrayList<String> DisciplinasMatriculadas = new ArrayList();
+
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
@@ -39,6 +42,8 @@ public class Main {
                 case 3:
                     Disciplinas.mainDiciplinas(disciplinas, professor, professorR);
                     break;
+                    case 4: 
+                    Matriculas.menuMatriculas(AlunosMatriculados, professor, disciplinas, AlunosMatriculados, DisciplinasMatriculadas);
                 default:
                     break;
             }

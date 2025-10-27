@@ -103,12 +103,12 @@ public class Disciplinas {
         int num, cont = 0, exit = 0;
         do {
 
-            System.out.println("[0] exit \n" +
-                    "[1] add \n" +
-                    "[2] list \n" +
-                    "[3] busca \n" +
-                    "[4] delet \n");
-            System.out.print("Digite:");
+            System.out.println("0 - Sair \n" +
+                    "1 - Adicionar Disciplinas \n" +
+                    "2 - Listar Disciplinas \n" +
+                    "3 - Buscar Disciplinas \n" +
+                    "4 - Remover Disciplinas\n");
+            
             num = tecla.nextInt();
 
             switch (num) {

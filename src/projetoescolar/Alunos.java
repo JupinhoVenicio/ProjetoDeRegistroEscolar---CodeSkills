@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Alunos {
 
-    Scanner teclado = new Scanner(System.in);
+    static Scanner teclado = new Scanner(System.in);
 
-    public void menuAlunos(ArrayList<String> aluno) {
+    public static void menuAlunos(ArrayList<String> aluno) {
 
         int menu = -1;
         do {
@@ -50,7 +50,7 @@ public class Alunos {
 
     }
 
-    public void ListarAluno(ArrayList<String> aluno) {
+    public static void ListarAluno(ArrayList<String> aluno) {
 
         if (aluno.size() == 0) {
 
@@ -68,7 +68,7 @@ public class Alunos {
 
     }
 
-    public void AddAluno(ArrayList<String> aluno) {
+    public static void AddAluno(ArrayList<String> aluno) {
 
         System.out.print("\nDigite o nome do aluno: ");
         aluno.add(teclado.nextLine());
@@ -76,7 +76,7 @@ public class Alunos {
 
     }
 
-    public void DeleteAluno(ArrayList<String> aluno) {
+    public static void DeleteAluno(ArrayList<String> aluno) {
 
         System.out.print("\nDigite o numero do aluno: ");
         aluno.remove((teclado.nextInt()) - 1);
@@ -84,7 +84,7 @@ public class Alunos {
 
     }
 
-    public void BuscarAluno(ArrayList<String> aluno) {
+    public static void BuscarAluno(ArrayList<String> aluno) {
 
         System.out.print("\nDigite o nome do aluno, verificaremos seu cadastro: ");
         String nome = teclado.nextLine();
@@ -97,7 +97,7 @@ public class Alunos {
         }
 
     }
-    public void AtualizarAluno(ArrayList<String> aluno) {
+    public static void AtualizarAluno(ArrayList<String> aluno) {
 
         System.out.print("\nDigite o numero do aluno: ");
         int numeroAluno = (teclado.nextInt())-1;

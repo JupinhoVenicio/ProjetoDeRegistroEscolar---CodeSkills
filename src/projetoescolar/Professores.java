@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Professores
 {
-    Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public static void menuProfessores(ArrayList<String> professor)
     {

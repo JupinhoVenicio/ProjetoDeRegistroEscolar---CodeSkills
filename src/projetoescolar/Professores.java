@@ -1,0 +1,101 @@
+package projetoescolar;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Professores
+{
+    Scanner input = new Scanner(System.in);
+
+    public void menuProfessores(ArrayList<String> professor)
+    {
+        int menu = -1;
+        do
+        {
+            System.out.println("\n-----MENU DOS PROFESSORES-----");
+            System.out.println("1 - Listar Professores");
+            System.out.println("2 - Adicionar Professores");
+            System.out.println("3 - Remover Professores");
+            System.out.println("4 - Buscar Professores");
+            System.out.println("5 - Atualizar Professores");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha: ");
+            int opcao = input.nextInt();
+            switch (opcao)
+            {
+                case 0:
+                break;
+                case 1:
+                    ListarProfessores(professor);
+                    break;
+                case 2:
+                    AdicionarProfessor(professor);
+                    break;
+
+                case 3:
+                    RemoverProfessor(professor);
+                    break;
+                case 4:
+                    BuscarProfessor(professor);
+                    break;
+                case 5:
+                    AtualizarProfessor(professor);
+                    break;
+                    default:
+                    System.out.println("Opcao Invalida!");
+            }
+        } while (menu != 0);
+    }
+
+    public void ListarProfessores(ArrayList<String> professor)
+    {
+        if (professor.isEmpty())
+        {
+            System.out.println("\nNenhum professor foi cadastrado!");
+        }
+        else
+        {
+            for (int i = 0; i < professor.size(); i++)
+            {
+                System.out.println((i + 1) + " - " + professor.get(i));
+            }
+        }
+    }
+
+    public void AdicionarProfessor(ArrayList<String> professor)
+    {
+        System.out.print("\nDigite o nome do professor: ");
+        professor.add(input.nextLine());
+        System.out.println("Professor adicionado com sucesso!");
+    }
+
+    public void RemoverProfessor(ArrayList<String> professor)
+    {
+        System.out.print("\nDigite o numero do professor: ");
+        professor.remove((input.nextInt()) - 1);
+        System.out.println("Professor removido com sucesso!");
+    }
+
+    public void BuscarProfessor(ArrayList<String> professor)
+    {
+        System.out.print("\nDigite o nome do professor: ");
+        String nome = input.nextLine();
+        if (professor.contains(nome))
+        {
+            System.out.println("O professor " + nome + " esta cadastrado em nosso sistema.");
+        }
+        else
+        {
+            System.out.println("Nao ha professor pelo nome de " + nome + " cadastrado em nosso sistema.");
+        }
+    }
+
+    public void AtualizarProfessor(ArrayList<String> professor)
+    {
+        System.out.print("\nDigite o numero do professor: ");
+        int num = input.nextInt()-1;
+        System.out.print("Novo nome do professor para esse cadastro: ");
+        professor.set(num, input.nextLine());
+        System.out.println("Cadastro atualizado com sucesso!");
+    }
+}

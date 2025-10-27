@@ -10,14 +10,20 @@ public class Main {
 
         Scanner teclado = new Scanner(System.in);
         ArrayList<String> aluno = new ArrayList();
-        
+        ArrayList<String> professor = new ArrayList();
         
         
         int menu = -1;
 
         do {
 
-            System.out.println("asdjuas");
+            System.out.println("\n-----GERENCIAMENTO ESCOLAR-----");
+            System.out.println("\n0 - Sair");
+            System.out.println("1 - Alunos");
+            System.out.println("2 - Professores");
+            System.out.println("3 - Disciplinas");
+            System.out.println("4 - Matriculas");
+            
             menu = teclado.nextInt();
             
             switch (menu) {
@@ -28,7 +34,7 @@ public class Main {
                     Alunos.menuAlunos(aluno);
                     break;
                 case 2:
-                    
+                    Professores.menuProfessores(professor);
                     break;
                 case 3:
                     break;

@@ -7,7 +7,7 @@ public class Professores
 {
     Scanner input = new Scanner(System.in);
 
-    public void menuProfessores(ArrayList<String> professor)
+    public static void menuProfessores(ArrayList<String> professor)
     {
         int menu = -1;
         do
@@ -47,7 +47,7 @@ public class Professores
         } while (menu != 0);
     }
 
-    public void ListarProfessores(ArrayList<String> professor)
+    public static void ListarProfessores(ArrayList<String> professor)
     {
         if (professor.isEmpty())
         {
@@ -62,21 +62,21 @@ public class Professores
         }
     }
 
-    public void AdicionarProfessor(ArrayList<String> professor)
+    public static void AdicionarProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o nome do professor: ");
         professor.add(input.nextLine());
         System.out.println("Professor adicionado com sucesso!");
     }
 
-    public void RemoverProfessor(ArrayList<String> professor)
+    public static void RemoverProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o numero do professor: ");
         professor.remove((input.nextInt()) - 1);
         System.out.println("Professor removido com sucesso!");
     }
 
-    public void BuscarProfessor(ArrayList<String> professor)
+    public static void BuscarProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o nome do professor: ");
         String nome = input.nextLine();
@@ -90,7 +90,7 @@ public class Professores
         }
     }
 
-    public void AtualizarProfessor(ArrayList<String> professor)
+    public static void AtualizarProfessor(ArrayList<String> professor)
     {
         System.out.print("\nDigite o numero do professor: ");
         int num = input.nextInt()-1;

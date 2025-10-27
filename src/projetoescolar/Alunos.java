@@ -20,6 +20,8 @@ public class Alunos {
             System.out.println("4 - Buscar Alunos");
             System.out.println("5 - Atualizar Alunos");
 
+            menu = teclado.nextInt();
+
             switch (menu) {
 
                 case 0:

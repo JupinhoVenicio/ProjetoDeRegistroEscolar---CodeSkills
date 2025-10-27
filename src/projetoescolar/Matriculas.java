@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 public class Matriculas{
 
-Scanner Scanner = new Scanner(System.in);
+static Scanner Scanner = new Scanner(System.in);
 
 public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> professor, ArrayList<> disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
 
     int num = -1;
     do{
-        System.out.println("\n-----MENU DAS MATRICULAS-----")
-        System.out.println("\n0-Sair")
-        System.out.println("1-Numero da Matricula")
-        System.out.println("2-")
-        System.out.println("-----MENU DAS MATRICULAS-----")
+        System.out.println("\n-----MENU DAS MATRICULAS-----");
+        System.out.println("\n0-Sair");
+        System.out.println("1-Numero da Matricula");
+        System.out.println("2-");
+        System.out.println("-----MENU DAS MATRICULAS-----");
         
         switch (op) {
                 case 0:
@@ -37,7 +37,7 @@ public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> pr
 
 }
 
- public void adicionarMatriculas(ArrayList<String>alunos, ArrayList<String>professor ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
+ public static void adicionarMatriculas(ArrayList<String>alunos, ArrayList<String>professor ArrayList<String>disciplinas, ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
         alunos.listarAluno(alunos);
         System.out.println("Digite o número do aluno que deseja matricular:");
         while(!teclado.hasNextInt()){
@@ -63,7 +63,7 @@ public static void menuMatriculas(ArrayList<String> alunos, ArrayList<String> pr
         }
     }
 
-    public void listarMatriculas(ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
+    public static void listarMatriculas(ArrayList<String>AlunosMatriculados, ArrayList<String>DisciplinasMatriculadas){
         System.out.println("-----LISTA DE MATRÍCULAS-----");
         if(AlunosMatriculados.isEmpty()){
             System.out.println("Nenhuma matrícula cadastrada.");
